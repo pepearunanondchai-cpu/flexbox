@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>FLEXBOX Healthspan Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:wght@200;300;400;500;600&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: five A4 pages stacked on a stone desk; every measure inside a page is in cqw so the page scales intact from phone to desktop. Single committed look. */
+:root {
+  color-scheme: light;
+  --ink: #0b0b0a; --ink-2: #1a1a17; --bone: #f4f2ed; --stone: #e2ddd3; --paper: #ffffff;
+  --mute: #77736a; --lime: #b4f21d; --amber: #e8a13a; --green: #0e2a20;
+  --line: rgba(11,11,10,.12);
+  --font: 'Poppins', 'Prompt', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--stone); color: var(--ink); font-family: var(--font); font-weight: 300; -webkit-font-smoothing: antialiased; padding-block: 32px 64px; padding-inline: 16px; }
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+.bar { max-width: 820px; margin: 0 auto 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #5d5a53; }
+.bar b { color: var(--ink); font-weight: 500; }
+.pages { display: flex; flex-direction: column; gap: 28px; align-items: center; }
+.page { width: 100%; max-width: 820px; aspect-ratio: 1 / 1.4142; background: var(--paper); container-type: inline-size; position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 40px 70px -40px rgba(11,11,10,.45); }
+.pad { position: absolute; inset: 0; padding: 7cqw 7cqw 5cqw; display: flex; flex-direction: column; gap: 3cqw; }
+.mono { font-family: var(--mono); font-size: 1.45cqw; letter-spacing: .1em; text-transform: uppercase; font-weight: 400; }
+.mute { color: var(--mute); }
+.thin { font-weight: 200; }
+.ph { display: flex; justify-content: space-between; align-items: center; }
+.ph svg { width: 16cqw; }
+.pf { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: .15cqw solid var(--line); padding-top: 1.8cqw; }
+.pf svg { width: 2.6cqw; }
+.h { font-size: 6.4cqw; line-height: .98; letter-spacing: -.045em; font-weight: 500; text-wrap: balance; }
+.lede { font-size: 1.9cqw; line-height: 1.55; color: #45423c; max-width: 62ch; }
+.chip { display: inline-block; font-family: var(--mono); font-size: 1.35cqw; padding: .4cqw 1cqw; border-radius: .8cqw; background: var(--ink); color: var(--lime); letter-spacing: .04em; white-space: nowrap; }
+.chip.am { color: var(--amber); }
+.chip.st { background: var(--stone); color: var(--ink); }
+.dot { width: 1.3cqw; height: 1.3cqw; border-radius: .35cqw; display: inline-block; flex: none; }
+.d-up { background: var(--lime); } .d-hold { background: #d6d0c4; } .d-att { background: var(--amber); }
+svg.fx { display: block; }
+
+/* cover */
+.cover { background: var(--ink); color: var(--bone); }
+.cover .mute { color: #9d998f; }
+.cover .ph svg { color: var(--bone); width: 22cqw; }
+.cover .ct { font-size: 9cqw; line-height: .92; letter-spacing: -.055em; font-weight: 500; margin-top: 8cqw; }
+.cover .hero { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; align-items: end; }
+.cover .n { font-size: 26cqw; line-height: .8; font-weight: 200; letter-spacing: -.07em; color: var(--lime); }
+.cover .n small { display: block; font-size: 2.2cqw; letter-spacing: 0; color: var(--bone); font-weight: 300; margin-top: 2cqw; }
+.cover dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 1.4cqw 3cqw; font-size: 1.9cqw; }
+.cover dt { font-family: var(--mono); font-size: 1.35cqw; letter-spacing: .1em; text-transform: uppercase; color: #9d998f; padding-top: .4cqw; }
+.cover dd { margin: 0; }
+.cover .pf { border-color: rgba(255,255,255,.14); }
+.cover .ring { position: absolute; right: -22cqw; top: 16cqw; width: 70cqw; aspect-ratio: 1; border-radius: 50%; border: .15cqw solid rgba(180,242,29,.28); }
+.cover .ring::after { content: ''; position: absolute; inset: 9cqw; border-radius: 50%; border: .15cqw solid rgba(255,255,255,.08); }
+
+/* summary */
+.sum { display: grid; grid-template-columns: 28cqw 1fr; gap: 3cqw; }
+.score { background: var(--ink); color: var(--bone); border-radius: 2.6cqw; padding: 3cqw; display: flex; flex-direction: column; gap: 1.4cqw; }
+.score svg { width: 100%; }
+.score .mono { color: #9d998f; }
+.score p { font-size: 1.6cqw; color: rgba(255,255,255,.72); line-height: 1.5; }
+.agechart { background: var(--bone); border-radius: 2.6cqw; padding: 3cqw; display: flex; flex-direction: column; gap: 1.5cqw; min-width: 0; }
+.agechart .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2cqw; }
+.agechart .big { font-size: 5.6cqw; letter-spacing: -.05em; font-weight: 400; line-height: 1; }
+.agechart .big small { font-size: 1.6cqw; color: var(--mute); letter-spacing: 0; margin-left: 1cqw; }
+.leg { display: flex; flex-direction: column; gap: .8cqw; font-family: var(--mono); font-size: 1.3cqw; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.leg span { display: flex; align-items: center; gap: 1cqw; }
+.leg i { width: 2.6cqw; height: .3cqw; display: inline-block; }
+.agechart svg { width: 100%; flex: 1; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+.m { border: .15cqw solid var(--line); border-radius: 2cqw; padding: 2.2cqw; display: flex; flex-direction: column; gap: .8cqw; }
+.m .top { display: flex; justify-content: space-between; align-items: center; gap: 1cqw; }
+.m .top span:first-child { display: flex; align-items: center; gap: 1cqw; }
+.m b { font-size: 4.6cqw; font-weight: 400; letter-spacing: -.045em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.m small { font-size: 1.45cqw; color: var(--mute); }
+.m .was { font-family: var(--mono); font-size: 1.3cqw; color: var(--mute); letter-spacing: .04em; }
+.keyrow { display: flex; gap: 3cqw; font-size: 1.5cqw; color: var(--mute); }
+.keyrow span { display: flex; align-items: center; gap: 1cqw; }
+
+/* blueprint */
+.tests { display: flex; flex-direction: column; }
+.t { display: grid; grid-template-columns: 6cqw 1fr 30cqw; gap: 2.4cqw; padding: 2.4cqw 0; border-top: .15cqw solid var(--line); align-items: center; }
+.t:last-child { border-bottom: .15cqw solid var(--line); }
+.t .no { font-family: var(--mono); font-size: 1.5cqw; color: var(--mute); align-self: start; padding-top: .6cqw; }
+.t h3 { font-size: 2.5cqw; font-weight: 500; letter-spacing: -.02em; display: flex; align-items: center; gap: 1.4cqw; }
+.t .res { font-size: 3.4cqw; letter-spacing: -.04em; font-weight: 400; margin-top: .6cqw; }
+.t .res small { font-size: 1.5cqw; color: var(--mute); letter-spacing: 0; margin-left: .8cqw; }
+.t p { font-size: 1.6cqw; color: #4a4740; line-height: 1.5; margin-top: .6cqw; }
+.viz { background: var(--bone); border-radius: 1.8cqw; padding: 2cqw; min-height: 15cqw; display: flex; flex-direction: column; justify-content: center; gap: 1.1cqw; }
+.tr { display: grid; grid-template-columns: 11cqw 1fr; gap: 1.4cqw; align-items: center; font-size: 1.35cqw; color: #4a4740; }
+.tr i { height: .9cqw; border-radius: .5cqw; background: rgba(11,11,10,.1); position: relative; overflow: hidden; }
+.tr i::after { content: ''; position: absolute; inset: 0; width: var(--v); background: var(--ink); border-radius: .5cqw; }
+.tr i.am::after { background: var(--amber); }
+.sym { display: grid; grid-template-columns: 1fr 1fr 10cqw; gap: .4cqw; align-items: center; font-size: 1.35cqw; color: #4a4740; }
+.sym .l, .sym .r { height: 1.1cqw; position: relative; }
+.sym .l::after, .sym .r::after { content: ''; position: absolute; top: 0; bottom: 0; border-radius: .5cqw; }
+.sym .l::after { right: 0; width: var(--v); background: #9c978c; }
+.sym .r::after { left: 0; width: var(--v); background: var(--ink); }
+.sym span { padding-left: 1cqw; }
+.rings { display: grid; grid-template-columns: 12cqw 1fr; gap: 2cqw; align-items: center; }
+.rings svg { width: 100%; transform: rotate(-90deg); }
+.rings ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .9cqw; font-size: 1.35cqw; color: #4a4740; }
+.rings li { display: flex; align-items: center; gap: 1cqw; }
+.rings li b { margin-left: auto; font-weight: 400; color: var(--ink); }
+
+/* ledger */
+.ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; }
+.col { border-radius: 2.6cqw; padding: 3cqw; display: flex; flex-direction: column; gap: 2cqw; }
+.col.in { background: var(--bone); }
+.col.out { background: var(--ink); color: var(--bone); }
+.col.out .mono { color: #9d998f; }
+.col .big { font-size: 7cqw; font-weight: 200; letter-spacing: -.06em; line-height: .9; }
+.col.out .big { color: var(--lime); }
+.col .big small { display: block; font-size: 1.5cqw; letter-spacing: 0; font-weight: 300; margin-top: 1cqw; color: var(--mute); }
+.col.out .big small { color: rgba(255,255,255,.65); }
+.stack { display: flex; height: 3cqw; border-radius: 1cqw; overflow: hidden; }
+.stack div { display: flex; align-items: center; padding-left: 1cqw; font-family: var(--mono); font-size: 1.2cqw; }
+.rowl { display: flex; justify-content: space-between; font-size: 1.6cqw; padding: 1.1cqw 0; border-top: .15cqw solid var(--line); }
+.col.out .rowl { border-color: rgba(255,255,255,.12); }
+.rowl b { font-weight: 400; font-variant-numeric: tabular-nums; }
+.rowl .k { display: flex; align-items: center; gap: 1cqw; }
+.reco { background: var(--green); color: var(--bone); border-radius: 2.6cqw; padding: 3cqw; display: grid; grid-template-columns: 1fr 1.4fr; gap: 3cqw; }
+.reco .mono { color: var(--lime); }
+.reco h3 { font-size: 3cqw; font-weight: 500; letter-spacing: -.03em; line-height: 1.1; margin-top: 1cqw; }
+.reco p { font-size: 1.7cqw; line-height: 1.55; color: rgba(255,255,255,.8); }
+.reco ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1cqw; font-size: 1.6cqw; }
+.reco li { display: flex; justify-content: space-between; gap: 2cqw; padding-bottom: 1cqw; border-bottom: .15cqw solid rgba(255,255,255,.14); }
+.reco li b { font-weight: 400; color: var(--lime); font-family: var(--mono); font-size: 1.5cqw; }
+
+/* plan */
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1cqw; }
+.day { background: var(--bone); border-radius: 1.6cqw; padding: 1.4cqw; min-height: 22cqw; display: flex; flex-direction: column; gap: 1cqw; }
+.day .mono { color: var(--mute); }
+.blk { border-radius: 1cqw; padding: 1cqw; font-size: 1.35cqw; line-height: 1.3; }
+.blk small { display: block; font-family: var(--mono); font-size: 1.1cqw; letter-spacing: .06em; opacity: .7; margin-top: .3cqw; }
+.b-t { background: var(--ink); color: var(--bone); }
+.b-s { background: var(--lime); color: var(--ink); }
+.b-r { background: var(--green); color: var(--bone); }
+.b-c { background: var(--paper); border: .15cqw solid var(--ink); }
+.targets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6cqw; }
+.tg { border: .15cqw solid var(--line); border-radius: 2cqw; padding: 2cqw; display: flex; flex-direction: column; gap: .6cqw; }
+.tg b { font-size: 3.6cqw; font-weight: 400; letter-spacing: -.04em; }
+.tg small { font-size: 1.4cqw; color: var(--mute); }
+.note { display: grid; grid-template-columns: 1fr 22cqw; gap: 3cqw; background: var(--bone); border-radius: 2.6cqw; padding: 3cqw; }
+.note p { font-size: 1.9cqw; line-height: 1.6; }
+.note .sig { display: flex; flex-direction: column; justify-content: space-between; gap: 2cqw; border-left: .15cqw solid var(--line); padding-left: 3cqw; }
+.note .sig svg { width: 100%; height: 7cqw; }
+.note .sig b { font-weight: 500; font-size: 1.9cqw; }
+.retest { display: flex; justify-content: space-between; align-items: center; background: var(--ink); color: var(--bone); border-radius: 2.6cqw; padding: 2.6cqw 3cqw; }
+.retest b { font-size: 3.4cqw; font-weight: 400; letter-spacing: -.04em; }
+.retest .mono { color: #9d998f; }
+.th { font-family: 'Prompt', 'Poppins', sans-serif; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="fx-logo" viewBox="130 136 2340 418">
+<defs>
+<g>
+<g id="glyph-0-0">
+<path d="M 10.609375 -19.34375 L 10.609375 -193.140625 C 10.609375 -201.472656 12.492188 -207.210938 16.265625 -210.359375 C 19.097656 -212.710938 23.503906 -213.890625 29.484375 -213.890625 L 111.546875 -213.890625 C 118.304688 -213.890625 123.648438 -211.375 127.578125 -206.34375 C 131.035156 -201.945312 132.765625 -196.601562 132.765625 -190.3125 C 132.765625 -184.488281 131.347656 -179.648438 128.515625 -175.796875 C 125.691406 -171.953125 121.6875 -170.03125 116.5 -170.03125 L 57.0625 -170.03125 L 57.0625 -131.828125 L 109.1875 -131.828125 C 114.53125 -131.828125 118.773438 -129.742188 121.921875 -125.578125 C 125.066406 -121.410156 126.640625 -116.578125 126.640625 -111.078125 C 126.640625 -105.097656 124.988281 -99.75 121.6875 -95.03125 C 118.382812 -90.320312 114.21875 -87.96875 109.1875 -87.96875 L 57.0625 -87.96875 L 57.0625 -19.34375 C 57.0625 -13.832031 54.742188 -9.226562 50.109375 -5.53125 C 45.472656 -1.84375 40.164062 0 34.1875 0 C 28.84375 0 23.929688 -1.6875 19.453125 -5.0625 C 14.972656 -8.445312 12.023438 -13.207031 10.609375 -19.34375 Z M 10.609375 -19.34375 "/>
+</g>
+<g id="glyph-0-1">
+<path d="M 8.25 -153.515625 L 8.25 -193.140625 C 8.25 -201.316406 10.566406 -207.566406 15.203125 -211.890625 C 19.847656 -216.210938 25.394531 -218.375 31.84375 -218.375 C 38.4375 -218.375 44.285156 -216.484375 49.390625 -212.703125 C 54.503906 -208.929688 57.0625 -204.0625 57.0625 -198.09375 L 57.0625 -47.40625 L 113.90625 -47.40625 C 119.875 -47.40625 124.507812 -45.125 127.8125 -40.5625 C 131.113281 -36 132.765625 -30.492188 132.765625 -24.046875 C 132.765625 -17.765625 131.269531 -12.5 128.28125 -8.25 C 124.820312 -3.375 120.03125 -0.9375 113.90625 -0.9375 L 29.484375 -0.9375 C 22.242188 -0.9375 16.582031 -3.691406 12.5 -9.203125 C 9.664062 -12.972656 8.25 -16.351562 8.25 -19.34375 Z M 8.25 -153.515625 "/>
+</g>
+<g id="glyph-0-2">
+<path d="M 11.5625 -127.109375 L 11.5625 -193.140625 C 11.5625 -200.367188 14.15625 -205.867188 19.34375 -209.640625 C 23.269531 -212.472656 27.75 -213.890625 32.78125 -213.890625 L 110.125 -213.890625 C 116.882812 -213.890625 122.390625 -211.21875 126.640625 -205.875 C 130.410156 -201.15625 132.296875 -195.492188 132.296875 -188.890625 C 132.296875 -183.234375 130.878906 -178.441406 128.046875 -174.515625 C 124.742188 -169.953125 120.34375 -167.671875 114.84375 -167.671875 L 58.484375 -167.671875 L 58.484375 -129.46875 L 110.125 -129.46875 C 115.789062 -129.46875 120.351562 -127.109375 123.8125 -122.390625 C 127.269531 -117.671875 129 -112.328125 129 -106.359375 C 129 -100.859375 127.582031 -95.984375 124.75 -91.734375 C 121.914062 -87.492188 117.984375 -85.375 112.953125 -85.375 L 58.484375 -85.375 L 58.484375 -44.8125 L 110.125 -44.8125 C 118.613281 -44.8125 125.0625 -42.53125 129.46875 -37.96875 C 133.238281 -34.039062 135.125 -29.085938 135.125 -23.109375 C 135.125 -17.296875 133.472656 -12.144531 130.171875 -7.65625 C 126.867188 -3.175781 122.625 -0.9375 117.4375 -0.9375 L 28.0625 -0.9375 C 24.601562 -0.9375 20.988281 -2.742188 17.21875 -6.359375 C 13.445312 -9.984375 11.5625 -13.523438 11.5625 -16.984375 Z M 11.5625 -127.109375 "/>
+</g>
+<g id="glyph-0-3">
+<path d="M 14.390625 -176.875 C 12.816406 -179.851562 11.476562 -182.953125 10.375 -186.171875 C 9.269531 -189.398438 8.71875 -192.035156 8.71875 -194.078125 C 8.71875 -200.992188 11.46875 -206.613281 16.96875 -210.9375 C 22.476562 -215.269531 28.613281 -217.4375 35.375 -217.4375 C 42.445312 -217.4375 47.082031 -215.46875 49.28125 -211.53125 L 89.84375 -158 L 129.46875 -211.53125 C 130.882812 -213.570312 133.082031 -215.222656 136.0625 -216.484375 C 139.050781 -217.742188 142.117188 -218.375 145.265625 -218.375 C 151.710938 -218.375 157.53125 -216.210938 162.71875 -211.890625 C 167.90625 -207.566406 170.5 -201.628906 170.5 -194.078125 C 170.5 -191.722656 170.300781 -189.328125 169.90625 -186.890625 C 169.519531 -184.453125 168.773438 -181.898438 167.671875 -179.234375 L 117.90625 -115.3125 L 172.390625 -44.8125 C 178.515625 -36.632812 181.578125 -28.613281 181.578125 -20.75 C 181.578125 -14.300781 178.75 -8.957031 173.09375 -4.71875 C 168.0625 -0.945312 162.164062 0.9375 155.40625 0.9375 C 152.257812 0.9375 149.425781 0.425781 146.90625 -0.59375 C 144.394531 -1.613281 142.59375 -3.222656 141.5 -5.421875 L 89.84375 -75.9375 L 42.453125 -10.140625 C 39.148438 -6.523438 35.453125 -3.773438 31.359375 -1.890625 C 27.273438 -0.00390625 23.425781 0.9375 19.8125 0.9375 C 14.144531 0.9375 9.425781 -1.179688 5.65625 -5.421875 C 1.882812 -9.671875 0 -15.097656 0 -21.703125 C 0 -25.628906 0.585938 -29.554688 1.765625 -33.484375 C 2.941406 -37.410156 4.945312 -41.1875 7.78125 -44.8125 L 61.3125 -117.90625 Z M 14.390625 -176.875 "/>
+</g>
+<g id="glyph-0-4">
+<path d="M 8.71875 -190.78125 C 9.976562 -197.695312 12.296875 -203.273438 15.671875 -207.515625 C 19.054688 -211.765625 23.03125 -213.890625 27.59375 -213.890625 L 100.46875 -213.890625 C 113.507812 -213.890625 124.984375 -207.914062 134.890625 -195.96875 C 144.796875 -184.019531 149.75 -170.894531 149.75 -156.59375 C 149.75 -148.726562 147.78125 -141.097656 143.84375 -133.703125 C 139.914062 -126.316406 134.023438 -120.1875 126.171875 -115.3125 C 137.796875 -113.738281 147.617188 -107.488281 155.640625 -96.5625 C 163.660156 -85.644531 167.671875 -73.582031 167.671875 -60.375 C 167.671875 -46.851562 163.347656 -34.90625 154.703125 -24.53125 C 144.796875 -12.738281 130.566406 -4.875 112.015625 -0.9375 L 27.59375 -0.9375 C 22.71875 -0.9375 18.351562 -2.46875 14.5 -5.53125 C 10.644531 -8.601562 8.71875 -12.421875 8.71875 -16.984375 Z M 58.015625 -129.46875 L 88.90625 -129.46875 C 92.988281 -129.46875 96.09375 -131.117188 98.21875 -134.421875 C 100.34375 -137.722656 101.40625 -141.734375 101.40625 -146.453125 C 101.40625 -151.796875 100.03125 -156.664062 97.28125 -161.0625 C 94.53125 -165.46875 90.953125 -167.671875 86.546875 -167.671875 L 58.015625 -167.671875 Z M 58.015625 -42.453125 L 93.625 -42.453125 C 102.113281 -42.453125 108.125 -43.828125 111.65625 -46.578125 C 115.195312 -49.328125 116.96875 -53.609375 116.96875 -59.421875 L 116.96875 -63.671875 C 116.96875 -68.546875 115.316406 -73.378906 112.015625 -78.171875 C 108.710938 -82.972656 104.863281 -85.375 100.46875 -85.375 L 58.015625 -85.375 Z M 58.015625 -42.453125 "/>
+</g>
+<g id="glyph-0-5">
+<path d="M 5.421875 -101.40625 L 4.71875 -106.828125 C 4.71875 -143.929688 15.09375 -172.703125 35.84375 -193.140625 C 54.863281 -211.847656 79.15625 -221.203125 108.71875 -221.203125 C 136.382812 -221.203125 159.570312 -212.867188 178.28125 -196.203125 C 200.445312 -176.554688 211.53125 -148.179688 211.53125 -111.078125 L 211.53125 -106.359375 C 211.53125 -89.535156 208.625 -73.65625 202.8125 -58.71875 C 195.738281 -40.476562 185.125 -25.9375 170.96875 -15.09375 C 154.144531 -2.195312 133.394531 4.25 108.71875 4.25 C 97.238281 4.25 85.289062 2.121094 72.875 -2.125 C 53.84375 -8.570312 38.75 -18.554688 27.59375 -32.078125 C 12.8125 -49.835938 5.421875 -72.945312 5.421875 -101.40625 Z M 57.0625 -106.359375 C 57.0625 -86.234375 61.582031 -70.550781 70.625 -59.3125 C 79.664062 -48.070312 92.363281 -42.453125 108.71875 -42.453125 C 124.75 -42.453125 137.484375 -48.582031 146.921875 -60.84375 C 155.878906 -72.476562 160.359375 -87.648438 160.359375 -106.359375 C 160.359375 -129.304688 156.148438 -146.441406 147.734375 -157.765625 C 139.328125 -169.085938 127.734375 -174.75 112.953125 -174.75 L 109.1875 -174.75 C 93.3125 -174.75 80.5 -168.691406 70.75 -156.578125 C 61 -144.472656 56.125 -129.460938 56.125 -111.546875 C 56.75 -109.023438 57.0625 -107.296875 57.0625 -106.359375 Z M 57.0625 -106.359375 "/>
+</g>
+</g>
+
+</defs>
+
+<path fill-rule="nonzero" fill="#b4f21d" fill-opacity="1" d="M 355.351562 474.75 L 380.671875 429.960938 L 304.734375 295.96875 C 288.453125 267.234375 309.207031 231.617188 342.234375 231.617188 L 547.839844 231.617188 L 519.78125 281.371094 L 364.554688 281.371094 C 359.335938 281.371094 356.046875 286.980469 358.589844 291.53125 L 435.894531 429.90625 L 376.9375 534.871094 C 372.5625 542.664062 364.320312 547.484375 355.386719 547.484375 C 346.457031 547.484375 338.222656 542.671875 333.84375 534.886719 L 157.925781 222.242188 C 137.78125 186.4375 163.679688 142.203125 204.761719 142.242188 L 555.664062 142.605469 C 574.335938 142.625 586.207031 162.585938 577.308594 179 L 570.316406 191.902344 L 210.0625 191.902344 C 203.644531 191.902344 199.605469 198.820312 202.761719 204.410156 Z M 355.351562 474.75 "/>
+<g fill="currentColor" fill-opacity="1">
+<use href="#glyph-0-0" x="674.390949" y="454.2898"/>
+<use href="#glyph-0-1" x="906.218318" y="454.2898"/>
+<use href="#glyph-0-2" x="1138.045688" y="454.2898"/>
+<use href="#glyph-0-3" x="1376.634689" y="454.2898"/>
+<use href="#glyph-0-4" x="1659.657269" y="454.2898"/>
+<use href="#glyph-0-5" x="1935.918218" y="454.2898"/>
+<use href="#glyph-0-3" x="2256.612746" y="454.2898"/>
+</g>
+</symbol>
+  <symbol id="fx-mark" viewBox="180 170 790 740"><path fill="#b4f21d" d="M 552.722656 762.511719 L 596.433594 685.207031 L 465.363281 453.933594 C 437.257812 404.339844 473.082031 342.863281 530.085938 342.863281 L 884.960938 342.863281 L 836.535156 428.738281 L 568.609375 428.738281 C 559.605469 428.738281 553.925781 438.417969 558.316406 446.277344 L 691.742188 685.109375 L 589.984375 866.28125 C 582.429688 879.730469 568.207031 888.050781 552.785156 888.050781 C 537.375 888.050781 523.160156 879.742188 515.601562 866.308594 L 211.972656 326.679688 C 177.203125 264.886719 221.902344 188.53125 292.808594 188.605469 L 898.46875 189.230469 C 930.691406 189.261719 951.179688 223.710938 935.828125 252.042969 L 923.757812 274.316406 L 301.960938 274.316406 C 290.882812 274.316406 283.910156 286.253906 289.355469 295.902344 Z"/></symbol>
+</svg>
+
+</head><body>
+<div class="bar"><span><b>Sample report</b> · illustrative member and figures</span><span>5 pages · A4</span></div>
+
+<div class="pages">
+
+  <!-- 1 Cover -->
+  <article class="page cover" aria-label="Page 1, cover">
+    <div class="ring" aria-hidden="true"></div>
+    <div class="pad">
+      <div class="ph"><svg class="fx" viewBox="130 136 2340 418" role="img" aria-label="FLEXBOX"><use href="#fx-logo"/></svg><span class="mono mute">Healthspan Report · Year one</span></div>
+      <h1 class="ct">Ploy,<br><span class="thin">twelve months in.</span></h1>
+      <div class="hero">
+        <div class="n">3.1<small>years returned: biological age 37.9 against a calendar age of 41.0</small></div>
+        <dl>
+          <dt>Member</dt><dd>Ploy S. · No. 000128</dd>
+          <dt>Plan</dt><dd>Flex Prime · 500 FLEX</dd>
+          <dt>Period</dt><dd>2 Jan – 28 Dec 2026</dd>
+          <dt>Coach</dt><dd>Coach Nont</dd>
+          <dt>Next re-test</dt><dd>2 Apr 2027</dd>
+        </dl>
+      </div>
+      <div class="pf"><span class="mono mute">Measured in years, not reps.</span><span class="mono mute">01 / 05</span></div>
+    </div>
+  </article>
+
+  <!-- 2 Summary -->
+  <article class="page" aria-label="Page 2, summary">
+    <div class="pad">
+      <div class="ph"><span class="mono mute">(02) Summary</span><svg class="fx" viewBox="130 136 2340 418" role="img" aria-label="FLEXBOX"><use href="#fx-logo"/></svg></div>
+      <h2 class="h">What came back <span class="thin">this year.</span></h2>
+      <p class="lede">Your fitness, strength and mobility all improved. Your biological age estimate fell while the calendar moved on, which is the gap we work to widen. One marker needs attention: tendon resilience.</p>
+      <div class="sum">
+        <div class="score">
+          <span class="mono">Healthspan score</span>
+          <svg viewBox="0 0 120 120" aria-label="Score 78 of 100">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="9"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#b4f21d" stroke-width="9" stroke-linecap="round" pathLength="100" stroke-dasharray="78 100" transform="rotate(-90 60 60)"/>
+            <text x="60" y="64" text-anchor="middle" fill="#f4f2ed" font-family="Poppins" font-weight="200" font-size="34" letter-spacing="-2">78</text>
+            <text x="60" y="82" text-anchor="middle" fill="#9d998f" font-family="JetBrains Mono" font-size="7" letter-spacing="1">/ 100</text>
+          </svg>
+          <span class="chip">+16 since Day 1</span>
+          <p>Combines fitness, strength, body composition, mobility and recovery into one number.</p>
+        </div>
+        <div class="agechart">
+          <div class="top">
+            <div><span class="mono mute">Biological age estimate</span><p class="big">37.9<small>years · was 41.2 on Day 1</small></p></div>
+            <div class="leg"><span><i style="background:repeating-linear-gradient(90deg,#77736a 0 4px,transparent 4px 7px)"></i>Calendar</span><span><i style="background:var(--ink);height:.5cqw"></i>Biological</span></div>
+          </div>
+          <svg viewBox="0 0 400 170" aria-label="Biological age falls from 41.2 to 37.9 while calendar age rises from 40.0 to 41.0">
+            <g font-family="JetBrains Mono" font-size="8" fill="#77736a">
+              <text x="0" y="14">42</text><text x="0" y="64">40</text><text x="0" y="114">38</text><text x="0" y="164">36</text>
+              <text x="30" y="168">Jan</text><text x="112" y="168">Apr</text><text x="196" y="168">Jul</text><text x="280" y="168">Oct</text><text x="368" y="168">Dec</text>
+            </g>
+            <g stroke="rgba(11,11,10,.08)"><line x1="20" y1="11" x2="400" y2="11"/><line x1="20" y1="61" x2="400" y2="61"/><line x1="20" y1="111" x2="400" y2="111"/></g>
+            <!-- y = 11 + (42 - age) * 25 -->
+            <path d="M30,61 L390,36" fill="none" stroke="#77736a" stroke-width="1.5" stroke-dasharray="4 5"/>
+                        <path d="M30,31 L120,46 L210,76 L300,96 L390,113.5" fill="none" stroke="#0b0b0a" stroke-width="2.5" stroke-linejoin="round"/>
+            <g fill="#b4f21d" stroke="#0b0b0a" stroke-width="2"><circle cx="30" cy="31" r="4"/><circle cx="120" cy="46" r="4"/><circle cx="210" cy="76" r="4"/><circle cx="300" cy="96" r="4"/><circle cx="390" cy="113.5" r="5"/></g>
+          </svg>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="m"><div class="top"><span><i class="dot d-up"></i><span class="mono mute">VO₂ max</span></span><span class="chip">+9.6</span></div><b>47.6</b><small>ml/kg/min</small><span class="was">Day 1: 38.0</span></div>
+        <div class="m"><div class="top"><span><i class="dot d-up"></i><span class="mono mute">Lean mass</span></span><span class="chip">+2.6 kg</span></div><b>48.8</b><small>kg</small><span class="was">Day 1: 46.2</span></div>
+        <div class="m"><div class="top"><span><i class="dot d-up"></i><span class="mono mute">Visceral fat</span></span><span class="chip">−4</span></div><b>7</b><small>level (healthy below 10)</small><span class="was">Day 1: 11</span></div>
+        <div class="m"><div class="top"><span><i class="dot d-up"></i><span class="mono mute">Mobility</span></span><span class="chip">+24</span></div><b>86</b><small>score / 100</small><span class="was">Day 1: 62</span></div>
+        <div class="m"><div class="top"><span><i class="dot d-up"></i><span class="mono mute">Resting HR</span></span><span class="chip">−12</span></div><b>60</b><small>bpm</small><span class="was">Day 1: 72</span></div>
+        <div class="m"><div class="top"><span><i class="dot d-att"></i><span class="mono mute">Grip strength</span></span><span class="chip st">±0</span></div><b>27</b><small>kg · holding</small><span class="was">Day 1: 27</span></div>
+      </div>
+      <div class="keyrow"><span><i class="dot d-up"></i>Improving</span><span><i class="dot d-hold"></i>Holding</span><span><i class="dot d-att"></i>Needs attention</span></div>
+      <div class="pf"><span class="mono mute">Sample report · illustrative figures</span><span class="mono mute">02 / 05</span></div>
+    </div>
+  </article>
+
+  <!-- 3 Blueprint -->
+  <article class="page" aria-label="Page 3, Blueprint results">
+    <div class="pad">
+      <div class="ph"><span class="mono mute">(03) Blueprint™ results</span><svg class="fx" viewBox="130 136 2340 418" role="img" aria-label="FLEXBOX"><use href="#fx-logo"/></svg></div>
+      <h2 class="h">Five tests. <span class="thin">One picture of you.</span></h2>
+      <div class="tests">
+        <div class="t"><span class="no">T—01</span><div><h3>DNA Test <span class="chip am">1 flag</span></h3><p class="res">Power-leaning<small>athlete type · tested once</small></p><p>Fast recovery and rapid caffeine metabolism. Lower tendon resilience: we load tendons slowly and keep them in your Stretch plan.</p></div>
+          <div class="viz"><div class="tr"><span>Power vs endurance</span><i style="--v:64%"></i></div><div class="tr"><span>Recovery speed</span><i style="--v:72%"></i></div><div class="tr"><span>Tendon resilience</span><i class="am" style="--v:41%"></i></div><div class="tr"><span>Caffeine metabolism</span><i style="--v:83%"></i></div></div></div>
+        <div class="t"><span class="no">T—02</span><div><h3>Metabolic Test <span class="chip">+9.6</span></h3><p class="res">47.6<small>VO₂ max · ml/kg/min</small></p><p>Top 25% for your age. Fat burning peaks at a heart rate of 132 bpm; that's your Zone 2 ceiling for cardio days.</p></div>
+          <div class="viz"><svg viewBox="0 0 300 110" aria-label="VO2 curve across five zones">
+            <g fill="rgba(11,11,10,.04)" stroke="rgba(11,11,10,.08)"><rect x="0" y="0" width="60" height="96"/><rect x="60" y="0" width="60" height="96"/><rect x="120" y="0" width="60" height="96"/><rect x="180" y="0" width="60" height="96" fill="rgba(180,242,29,.18)"/><rect x="240" y="0" width="60" height="96" fill="rgba(180,242,29,.35)"/></g>
+            <path d="M0,90 C50,86 90,74 130,60 C170,44 210,22 260,12 C280,9 290,8 300,8" fill="none" stroke="#0b0b0a" stroke-width="2.5"/><circle cx="300" cy="8" r="4" fill="#b4f21d" stroke="#0b0b0a" stroke-width="1.5"/>
+            <g font-family="JetBrains Mono" font-size="8" fill="#77736a"><text x="24" y="107">Z1</text><text x="84" y="107">Z2</text><text x="144" y="107">Z3</text><text x="204" y="107">Z4</text><text x="264" y="107">Z5</text></g></svg></div></div>
+        <div class="t"><span class="no">T—03</span><div><h3>Dynamic Strength <span class="chip">+3%</span></h3><p class="res">94%<small>left / right symmetry</small></p><p>Hamstrings are balanced again. Shoulders still favour the right by 6%; single-arm work stays in your plan.</p></div>
+          <div class="viz"><div class="sym"><span class="l" style="--v:86%"></span><span class="r" style="--v:92%"></span><span>Quads</span></div><div class="sym"><span class="l" style="--v:78%"></span><span class="r" style="--v:76%"></span><span>Hamstrings</span></div><div class="sym"><span class="l" style="--v:90%"></span><span class="r" style="--v:88%"></span><span>Glutes</span></div><div class="sym"><span class="l" style="--v:66%"></span><span class="r" style="--v:72%"></span><span>Shoulders</span></div></div></div>
+        <div class="t"><span class="no">T—04</span><div><h3>Body Composition · 3D <span class="chip">−4 visceral</span></h3><p class="res">21.6%<small>body fat · was 26.1%</small></p><p>You gained 2.6 kg of lean mass and lost 4.1 kg of fat mass. Visceral fat is now in the healthy range.</p></div>
+          <div class="viz"><div class="rings"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(11,11,10,.08)" stroke-width="9"/><circle cx="60" cy="60" r="52" fill="none" stroke="#0b0b0a" stroke-width="9" pathLength="100" stroke-dasharray="78 100" stroke-linecap="round"/><circle cx="60" cy="60" r="38" fill="none" stroke="rgba(11,11,10,.08)" stroke-width="9"/><circle cx="60" cy="60" r="38" fill="none" stroke="#b4f21d" stroke-width="9" pathLength="100" stroke-dasharray="22 100" stroke-linecap="round"/></svg><ul><li><i class="dot" style="background:var(--ink)"></i>Lean mass<b>48.8 kg</b></li><li><i class="dot" style="background:var(--lime)"></i>Body fat<b>21.6%</b></li><li><i class="dot d-hold"></i>Body water<b>58%</b></li></ul></div></div></div>
+        <div class="t"><span class="no">T—05</span><div><h3>Gait Analysis <span class="chip st">Holding</span></h3><p class="res">1.32 m<small>stride · 172 steps/min</small></p><p>Neutral pronation and 49 / 51 load balance. Ground contact time is 238 ms, unchanged.</p></div>
+          <div class="viz"><div class="tr"><span>Load L / R</span><i style="--v:49%"></i></div><div class="tr"><span>Pronation</span><i style="--v:50%"></i></div><div class="tr"><span>Cadence</span><i style="--v:80%"></i></div><div class="tr"><span>Stride length</span><i style="--v:70%"></i></div></div></div>
+      </div>
+      <div class="pf"><span class="mono mute">Sample report · illustrative figures</span><span class="mono mute">03 / 05</span></div>
+    </div>
+  </article>
+
+  <!-- 4 Ledger -->
+  <article class="page" aria-label="Page 4, return on investment">
+    <div class="pad">
+      <div class="ph"><span class="mono mute">(04) Your return</span><svg class="fx" viewBox="130 136 2340 418" role="img" aria-label="FLEXBOX"><use href="#fx-logo"/></svg></div>
+      <h2 class="h">What you put in. <span class="thin">What came back.</span></h2>
+      <div class="ledger">
+        <div class="col in">
+          <span class="mono mute">You invested</span>
+          <p class="big">118 h<small>across 142 sessions and 500 FLEX</small></p>
+          <div class="stack" aria-label="FLEX by discipline"><div style="flex:45;background:var(--ink);color:var(--bone)">45%</div><div style="flex:20;background:var(--lime)">20%</div><div style="flex:22;background:var(--green);color:var(--bone)">22%</div><div style="flex:13;background:var(--paper);color:var(--ink)">13%</div></div>
+          <div>
+            <div class="rowl"><span class="k"><i class="dot" style="background:var(--ink)"></i>Train</span><b>64 sessions · 225 FLEX</b></div>
+            <div class="rowl"><span class="k"><i class="dot" style="background:var(--lime)"></i>Stretch</span><b>30 sessions · 100 FLEX</b></div>
+            <div class="rowl"><span class="k"><i class="dot" style="background:var(--green)"></i>Recover</span><b>38 sessions · 110 FLEX</b></div>
+            <div class="rowl"><span class="k"><i class="dot" style="background:var(--paper);outline:.15cqw solid var(--ink)"></i>Clinic</span><b>10 visits · 65 FLEX</b></div>
+          </div>
+        </div>
+        <div class="col out">
+          <span class="mono">You got back</span>
+          <p class="big">3.1 yrs<small>biological age gap against calendar age</small></p>
+          <div>
+            <div class="rowl"><span>Fitness (VO₂ max)</span><b>+25%</b></div>
+            <div class="rowl"><span>Lean mass</span><b>+2.6 kg</b></div>
+            <div class="rowl"><span>Fat mass</span><b>−4.1 kg</b></div>
+            <div class="rowl"><span>Mobility score</span><b>+24 pts</b></div>
+            <div class="rowl"><span>Resting heart rate</span><b>−12 bpm</b></div>
+            <div class="rowl"><span>Average sleep (wearable)</span><b>+38 min</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="reco">
+        <div><span class="mono">Coach recommendation</span><h3>Move 10% of your FLEX from Train to Stretch.</h3></div>
+        <div>
+          <p>Mobility was your fastest-moving score, and your DNA flags tendon resilience. Strength is in a good place, so the best return next quarter comes from range of motion and tendon work.</p>
+          <ul style="margin-top:1.6cqw"><li><span>Train</span><b>45% → 35%</b></li><li><span>Stretch</span><b>20% → 30%</b></li><li><span>Recover · Clinic</span><b>No change</b></li></ul>
+        </div>
+      </div>
+      <div class="pf"><span class="mono mute">Changes are associations measured at FLEXBOX, not guarantees · Sample</span><span class="mono mute">04 / 05</span></div>
+    </div>
+  </article>
+
+  <!-- 5 Plan -->
+  <article class="page" aria-label="Page 5, next 90 days">
+    <div class="pad">
+      <div class="ph"><span class="mono mute">(05) Next 90 days</span><svg class="fx" viewBox="130 136 2340 418" role="img" aria-label="FLEXBOX"><use href="#fx-logo"/></svg></div>
+      <h2 class="h">Your plan, <span class="thin">rewritten.</span></h2>
+      <div class="week">
+        <div class="day"><span class="mono">Mon</span><div class="blk b-t">Strength A<small>60 min</small></div></div>
+        <div class="day"><span class="mono">Tue</span><div class="blk b-s">Assisted stretch<small>45 min</small></div><div class="blk b-r">Sauna + cold<small>30 min</small></div></div>
+        <div class="day"><span class="mono">Wed</span><div class="blk b-t">Zone 2 cardio<small>45 min · ≤132 bpm</small></div></div>
+        <div class="day"><span class="mono">Thu</span><div class="blk b-s">Mobility class<small>50 min</small></div></div>
+        <div class="day"><span class="mono">Fri</span><div class="blk b-t">Strength B<small>60 min</small></div><div class="blk b-r">Red light<small>20 min</small></div></div>
+        <div class="day"><span class="mono">Sat</span><div class="blk b-s">Tendon + stretch<small>40 min</small></div></div>
+        <div class="day"><span class="mono">Sun</span><div class="blk b-c">Rest · walk<small>8,000 steps</small></div></div>
+      </div>
+      <div class="targets">
+        <div class="tg"><span class="mono mute">VO₂ max</span><b>49.0</b><small>target by re-test</small></div>
+        <div class="tg"><span class="mono mute">Mobility</span><b>90</b><small>score / 100</small></div>
+        <div class="tg"><span class="mono mute">Shoulder symmetry</span><b>97%</b><small>left / right</small></div>
+        <div class="tg"><span class="mono mute">Grip strength</span><b>29 kg</b><small>up from 27</small></div>
+      </div>
+      <div class="note">
+        <div><span class="mono mute">Coach note</span><p style="margin-top:1.4cqw">Ploy, this was a strong first year. You showed up three or four times a week, and the numbers show it. Next quarter we slow down on heavy lifting and spend that time on range and tendons, so the strength you've built lasts. See you on 2 April for your re-test.</p><p class="th" style="margin-top:1.2cqw;font-size:1.7cqw;color:var(--mute)">ปีแรกของคุณทำได้ดีมากครับ ไตรมาสหน้าเราจะเน้นความยืดหยุ่นและเส้นเอ็น เพื่อให้ความแข็งแรงที่สร้างมาอยู่กับคุณไปนาน ๆ</p></div>
+        <div class="sig"><svg viewBox="0 0 200 60" aria-hidden="true"><path d="M8,44 C30,10 44,12 40,36 C38,50 56,22 70,26 C82,30 74,48 90,40 C104,33 112,18 124,24 C134,30 128,44 146,38 C160,33 172,30 192,28" fill="none" stroke="#0b0b0a" stroke-width="2" stroke-linecap="round"/></svg><div><b>Coach Nont</b><br><span class="mono mute">Performance coach</span></div></div>
+      </div>
+      <div class="retest"><div><span class="mono">Next re-test · Blueprint</span><br><b>Friday 2 April 2027</b></div><svg class="fx" viewBox="180 170 790 740" style="width:5cqw" aria-hidden="true"><use href="#fx-mark"/></svg></div>
+      <div class="pf"><span class="mono mute">Sample report · illustrative member and figures</span><span class="mono mute">05 / 05</span></div>
+    </div>
+  </article>
+</div>
+
+</body></html>
