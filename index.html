@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FLEXBOX — Personalised Longevity Club</title>
+  <meta name="description" content="Training, clinic, assisted stretch and recovery under one roof — every member measured, every session returned. A new way to flex, measured in years, not reps." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b0b0a" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="img/space/p05.jpg" />
+  <script type="module" crossorigin src="/flexbox/assets/index-BaTv500c.js"></script>
+  <link rel="stylesheet" crossorigin href="/flexbox/assets/index-C8mEbgmf.css">
+</head>
+<body class="is-loading">
+
+  <!-- ─────────── Loader ─────────── -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__read loader__read--l"><span>D = </span><b data-load-d>00,0</b></div>
+    <div class="loader__line"><i></i><em class="dot dot--l"></em><em class="dot dot--r"></em></div>
+    <div class="loader__read loader__read--r"><span>V = </span><b data-load-v>0,0</b></div>
+    <div class="loader__mark" data-logo-mark></div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- ─────────── Navigation ─────────── -->
+  <header class="nav">
+    <a href="#top" class="nav__logo" data-scroll aria-label="FLEXBOX home" data-logo></a>
+    <nav class="nav__pill" aria-label="Primary">
+      <a href="#disciplines" data-scroll>Disciplines</a>
+      <a href="#blueprint" data-scroll>Blueprint</a>
+      <a href="#roi" data-scroll>ROI</a>
+      <a href="#spaces" data-scroll>Spaces</a>
+      <a href="#membership" data-scroll>Membership</a>
+    </nav>
+    <a href="#book" class="btn btn--lime nav__cta" data-scroll data-cursor="Book">Book your Blueprint</a>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
+  </header>
+  <div class="menu" aria-hidden="true">
+    <a href="#disciplines" data-scroll><small>01</small>Disciplines</a>
+    <a href="#blueprint" data-scroll><small>02</small>Blueprint</a>
+    <a href="#roi" data-scroll><small>03</small>ROI</a>
+    <a href="#method" data-scroll><small>04</small>Method</a>
+    <a href="#spaces" data-scroll><small>05</small>Spaces</a>
+    <a href="#membership" data-scroll><small>06</small>Membership</a>
+    <a href="#book" data-scroll class="menu__cta"><small>→</small>Book your Blueprint</a>
+  </div>
+
+  <!-- Persistent HUD (readingstones-style measurement readouts) -->
+  <div class="hud" aria-hidden="true">
+    <div class="hud__l"><span data-hud-index>00</span><i></i><span data-hud-label>Entrance</span></div>
+    <div class="hud__r"><span>D = </span><b data-hud-depth>00,0</b><span class="hud__bar"><i data-hud-bar></i></span></div>
+  </div>
+
+  <main>
+
+    <!-- ─────────── 00 · Hero / Entrance ─────────── -->
+    <section class="hero" id="top" data-section="00" data-label="Entrance">
+      <div class="hero__stage">
+        <h1 class="hero__word" aria-label="FLEXBOX">
+          <span>F</span><span>L</span><span>E</span><span>X</span><span>B</span><span>O</span><span>X</span>
+        </h1>
+
+        <div class="hero__frame">
+          <img class="hero__img hero__img--a" src="img/space/p05.jpg" alt="The darkened entrance corridor of FLEXBOX" />
+          <img class="hero__img hero__img--b" src="img/space/p16.jpg" alt="FLEXBOX reception with green marble counter" />
+          <div class="hero__veil"></div>
+          <div class="hero__arrive">
+            <p class="mono">V = 1,0 &nbsp;·&nbsp; YOU HAVE ARRIVED</p>
+            <h2>Welcome to the<br />longest game you'll play.</h2>
+          </div>
+        </div>
+
+        <div class="hero__annot hero__annot--tl mono">D = <b data-hero-d>50,0</b><br />V = <b data-hero-v>0,0</b></div>
+        <div class="hero__annot hero__annot--tr mono">13.69° N<br />100.75° E</div>
+
+        <div class="hero__intro">
+          <p class="eyebrow">Personalised Longevity Club · Bangkok</p>
+          <p class="hero__lede">A new way to flex —<br /><em>measured in years, not reps.</em></p>
+          <div class="hero__ctas">
+            <a href="#book" class="btn btn--ink" data-scroll data-cursor="Book">Book your Blueprint</a>
+            <a href="#disciplines" class="btn btn--ghost" data-scroll>Explore</a>
+          </div>
+        </div>
+
+        <p class="hero__col mono">We<br />build<br />healthspan<br />for people<br />who intend<br />to be here<br />for a long<br />time.</p>
+
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="badgeCircle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
+            <text><textPath href="#badgeCircle">FLEX YOUR MOVE · MEASURED IN YEARS · FLEX YOUR MOVE · MEASURED IN YEARS ·</textPath></text>
+          </svg>
+          <span data-logo-mark></span>
+        </div>
+
+        <div class="hero__scroll mono"><i></i>Scroll to enter</div>
+      </div>
+    </section>
+
+    <!-- ─────────── 01 · Manifesto ─────────── -->
+    <section class="manifesto" id="manifesto" data-section="01" data-label="Manifesto">
+      <div class="wrap">
+        <p class="label mono"><span>(01)</span> The shift</p>
+        <p class="manifesto__text" data-words>
+          Most gyms sell you reps. We measure what they
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span>
+          return — strength you keep, a heart that
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></span>
+          lasts, joints that still move freely at eighty, and years
+          <span class="ico ico--lime" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+          you get back. Training, clinic, stretch and recovery — under one roof, answering to one number: your healthspan.
+        </p>
+        <div class="manifesto__foot">
+          <div><span class="mono">Vision</span><p>Extend your vitality, sustain peak performance, and stay fully present for the people who matter most.</p></div>
+          <div><span class="mono">Mission</span><p>Deeply personalised, science-driven fitness and recovery that evolves with each member — so you perform better and live longer.</p></div>
+          <div><span class="mono">Paradigm</span><p>Gym + clinic + stretch + recovery, with a measurable return on every session you invest.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 02 · Four Disciplines (horizontal) ─────────── -->
+    <section class="pillars" id="disciplines" data-section="02" data-label="Disciplines">
+      <div class="pillars__pin">
+        <div class="pillars__track">
+          <article class="pillars__intro">
+            <p class="label mono"><span>(02)</span> Four disciplines</p>
+            <h2>One roof.<br />Four disciplines.<br /><span class="thin">One number.</span></h2>
+            <p class="pillars__lead">Every discipline reads from — and writes back to — your Blueprint. Nothing is generic, nothing is guessed.</p>
+            <div class="pillars__drag mono"><i></i>Keep scrolling</div>
+          </article>
+
+          <article class="pillar" data-cursor="Train">
+            <figure class="pillar__img"><img src="img/space/p28.jpg" alt="Strength floor with racks and dumbbells" loading="lazy" /></figure>
+            <div class="pillar__body">
+              <p class="pillar__idx mono">01 / 04</p>
+              <h3>Train</h3>
+              <p class="pillar__sub">Strength &amp; Performance</p>
+              <p>Coached strength and conditioning on a floor built around your Blueprint — your programme is rewritten every ninety days, from your own data.</p>
+              <ul class="mono"><li>Personal training</li><li>Small-group performance</li><li>Hybrid conditioning</li><li>Coached open floor</li></ul>
+            </div>
+          </article>
+
+          <article class="pillar" data-cursor="Clinic">
+            <figure class="pillar__img"><img src="img/space/p44.jpg" alt="Assessment lab with treadmill and consultation desk" loading="lazy" /></figure>
+            <div class="pillar__body">
+              <p class="pillar__idx mono">02 / 04</p>
+              <h3>Clinic</h3>
+              <p class="pillar__sub">Assessment &amp; Longevity Care</p>
+              <p>An in-house assessment lab where every plan begins with evidence — metabolic testing, body composition, movement screening and physiotherapy.</p>
+              <ul class="mono"><li>Blueprint assessment</li><li>VO₂ max &amp; metabolic</li><li>Physiotherapy</li><li>90-day re-testing</li></ul>
+            </div>
+          </article>
+
+          <article class="pillar" data-cursor="Stretch">
+            <figure class="pillar__img"><img src="img/space/p34.jpg" alt="Studio with mats under a coffered light ceiling" loading="lazy" /></figure>
+            <div class="pillar__body">
+              <p class="pillar__idx mono">03 / 04</p>
+              <h3>Stretch</h3>
+              <p class="pillar__sub">Assisted Stretch &amp; Mobility</p>
+              <p>Practitioner-led assisted stretching and mobility work that restores range of motion — the most overlooked marker of how well you will age.</p>
+              <ul class="mono"><li>1:1 assisted stretch</li><li>Mobility classes</li><li>Studio sessions</li><li>Range-of-motion tracking</li></ul>
+            </div>
+          </article>
+
+          <article class="pillar" data-cursor="Recover">
+            <figure class="pillar__img"><img src="img/space/p50b.jpg" alt="Timber sauna with warm cove lighting" loading="lazy" /></figure>
+            <div class="pillar__body">
+              <p class="pillar__idx mono">04 / 04</p>
+              <h3>Recover</h3>
+              <p class="pillar__sub">Recovery Technologies</p>
+              <p>Heat, cold and light — prescribed, not guessed. Recovery is scheduled into your week with the same precision as your training.</p>
+              <ul class="mono"><li>Sauna</li><li>Cold immersion</li><li>Red light therapy</li><li>Oxygen chamber</li></ul>
+            </div>
+          </article>
+        </div>
+        <div class="pillars__progress"><i></i></div>
+      </div>
+    </section>
+
+    <!-- ─────────── 03 · Blueprint ─────────── -->
+    <section class="blueprint" id="blueprint" data-section="03" data-label="Blueprint">
+      <div class="blueprint__pin">
+        <div class="bp-left">
+          <div class="blueprint__head">
+            <p class="label mono"><span>(03)</span> Assessment before action</p>
+            <h2 class="bp-title"><b>BLUE</b><span>PRINT</span><sup>™</sup></h2>
+            <p class="bp-sub">Advanced Physical Assessment</p>
+          </div>
+
+          <ol class="bp-tests">
+            <li data-test>
+              <span class="mono bp-n">01</span>
+              <div><h3>DNA Test</h3><p>Unlock your genetic blueprint to optimise nutrition, injury prevention and systemic health.</p></div>
+            </li>
+            <li data-test>
+              <span class="mono bp-n">02</span>
+              <div><h3>Metabolic Test</h3><p>VO₂ max, substrate data and recovery markers to guide how — and how hard — you train.</p></div>
+            </li>
+            <li data-test>
+              <span class="mono bp-n">03</span>
+              <div><h3>Dynamic Strength Test</h3><p>Force production and muscle imbalances, mapped to build a foundation of functional power.</p></div>
+            </li>
+            <li data-test>
+              <span class="mono bp-n">04</span>
+              <div><h3>Body Composition · 3D Scan</h3><p>Beyond the scale — precise biometric mapping of lean mass and visceral health.</p></div>
+            </li>
+            <li data-test>
+              <span class="mono bp-n">05</span>
+              <div><h3>Gait Analysis</h3><p>Movement efficiency and biomechanical alignment, for pain-free longevity.</p></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="bp-stage">
+          <div class="bp-bgs">
+            <img class="bp-bg is-on" src="img/space/p42b.jpg" alt="FLEXBOX treatment room" loading="lazy" />
+            <img class="bp-bg" src="img/space/p40.jpg" alt="FLEXBOX cardio lab" loading="lazy" />
+            <img class="bp-bg" src="img/space/p28.jpg" alt="FLEXBOX strength zone" loading="lazy" />
+            <img class="bp-bg" src="img/space/p44.jpg" alt="FLEXBOX assessment lab" loading="lazy" />
+            <img class="bp-bg" src="img/space/p34.jpg" alt="FLEXBOX studio" loading="lazy" />
+          </div>
+          <div class="bp-chip mono"><i></i>Sample report</div>
+
+          <div class="bp-cards">
+            <!-- 01 DNA -->
+            <article class="bp-card" data-card>
+              <header><span class="mono">01 · Genetic profile</span><span class="mono bp-ok">Mapped</span></header>
+              <p class="bp-big">Power-leaning <small>athlete type</small></p>
+              <div class="viz-traits">
+                <div><span>Power</span><i style="--v:.64"></i><span>Endurance</span></div>
+                <div><span>Recovery speed</span><i class="solo" style="--v:.72"></i><b>Fast</b></div>
+                <div><span>Tendon resilience</span><i class="solo" style="--v:.41"></i><b>Watch</b></div>
+                <div><span>Caffeine metabolism</span><i class="solo" style="--v:.83"></i><b>Rapid</b></div>
+              </div>
+            </article>
+
+            <!-- 02 Metabolic -->
+            <article class="bp-card" data-card>
+              <header><span class="mono">02 · Metabolic</span><span class="mono bp-ok">Measured</span></header>
+              <p class="bp-big">47.6 <small>VO₂ max · ml/kg/min</small></p>
+              <svg class="viz-vo2" viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+                <rect x="0" y="0" width="80" height="140" class="z z1"/><rect x="80" y="0" width="80" height="140" class="z z2"/><rect x="160" y="0" width="80" height="140" class="z z3"/><rect x="240" y="0" width="80" height="140" class="z z4"/><rect x="320" y="0" width="80" height="140" class="z z5"/>
+                <path class="vo2-line" pathLength="1" d="M0,128 C60,124 110,108 160,88 C210,66 250,40 300,24 C330,16 360,12 400,11"/>
+                <circle cx="400" cy="11" r="5" class="vo2-dot"/>
+              </svg>
+              <div class="viz-legend mono"><span>Z1</span><span>Z2</span><span>Z3</span><span>Z4</span><span>Z5</span></div>
+            </article>
+
+            <!-- 03 Strength -->
+            <article class="bp-card" data-card>
+              <header><span class="mono">03 · Dynamic strength</span><span class="mono bp-ok">Balanced</span></header>
+              <p class="bp-big">94% <small>left / right symmetry</small></p>
+              <div class="viz-sym">
+                <div><i style="--l:.86;--r:.92"></i><span>Quadriceps</span></div>
+                <div><i style="--l:.78;--r:.74"></i><span>Hamstrings</span></div>
+                <div><i style="--l:.90;--r:.88"></i><span>Glutes</span></div>
+                <div><i style="--l:.66;--r:.72"></i><span>Shoulders</span></div>
+              </div>
+              <div class="viz-legend mono"><span>Left</span><span>Right</span></div>
+            </article>
+
+            <!-- 04 Body composition -->
+            <article class="bp-card" data-card>
+              <header><span class="mono">04 · Body composition</span><span class="mono bp-ok">Scanned</span></header>
+              <div class="viz-rings">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle cx="60" cy="60" r="52" class="rt"/><circle cx="60" cy="60" r="52" class="rv r1" pathLength="1" style="--v:.78"/>
+                  <circle cx="60" cy="60" r="40" class="rt"/><circle cx="60" cy="60" r="40" class="rv r2" pathLength="1" style="--v:.22"/>
+                  <circle cx="60" cy="60" r="28" class="rt"/><circle cx="60" cy="60" r="28" class="rv r3" pathLength="1" style="--v:.58"/>
+                </svg>
+                <ul>
+                  <li><i class="d1"></i><span>Lean mass</span><b>48.8 kg</b></li>
+                  <li><i class="d2"></i><span>Body fat</span><b>21.6%</b></li>
+                  <li><i class="d3"></i><span>Body water</span><b>58%</b></li>
+                  <li><i class="d4"></i><span>Visceral fat</span><b>Level 7</b></li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- 05 Gait -->
+            <article class="bp-card" data-card>
+              <header><span class="mono">05 · Gait analysis</span><span class="mono bp-ok">Aligned</span></header>
+              <p class="bp-big">1.32 m <small>stride · 172 steps/min</small></p>
+              <div class="viz-feet">
+                <svg viewBox="14 14 192 132" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="hp"><stop offset="0" stop-color="#b4f21d"/><stop offset=".55" stop-color="#b4f21d" stop-opacity=".35"/><stop offset="1" stop-color="#b4f21d" stop-opacity="0"/></radialGradient>
+                  </defs>
+                  <g class="foot"><path d="M50 20c22 0 32 22 30 52s-6 62-26 66-30-24-30-58 4-60 26-60z"/><circle cx="56" cy="42" r="20" fill="url(#hp)"/><circle cx="50" cy="118" r="18" fill="url(#hp)"/><circle cx="40" cy="78" r="10" fill="url(#hp)" opacity=".5"/></g>
+                  <g class="foot" transform="translate(220 0) scale(-1 1)"><path d="M50 20c22 0 32 22 30 52s-6 62-26 66-30-24-30-58 4-60 26-60z"/><circle cx="58" cy="44" r="18" fill="url(#hp)"/><circle cx="50" cy="118" r="20" fill="url(#hp)"/><circle cx="42" cy="80" r="8" fill="url(#hp)" opacity=".5"/></g>
+                </svg>
+                <ul>
+                  <li><span>Pronation</span><b>Neutral</b></li>
+                  <li><span>Load balance</span><b>49 / 51</b></li>
+                  <li><span>Ground contact</span><b>238 ms</b></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="bp-meter mono"><span>Blueprint</span><b data-bp-pct>0%</b><span class="bp-meter__bar"><i data-bp-bar></i></span></div>
+      </div>
+    </section>
+
+    <!-- ─────────── 04 · ROI ─────────── -->
+    <section class="roi" id="roi" data-section="04" data-label="Return">
+      <div class="wrap">
+        <div class="roi__head">
+          <p class="label mono"><span>(04)</span> Return on investment</p>
+          <h2>Every session<br /><span class="thin">has a return.</span></h2>
+          <p class="roi__lead">Each quarter, every member receives a Healthspan Report: what you put in, what came back, and what we change next. If a number isn't moving, your plan is.</p>
+        </div>
+
+        <div class="roi__panel">
+          <div class="roi__bar">
+            <div class="roi__who">
+              <span class="roi__avatar" data-logo-mark></span>
+              <div><b>Healthspan Report</b><span class="mono">Member · illustrative profile</span></div>
+            </div>
+            <div class="seg" role="tablist" aria-label="Months as a member">
+              <button role="tab" data-month="0" aria-selected="true">Day 1</button>
+              <button role="tab" data-month="3" aria-selected="false">Month 3</button>
+              <button role="tab" data-month="6" aria-selected="false">Month 6</button>
+              <button role="tab" data-month="12" aria-selected="false">Month 12</button>
+            </div>
+          </div>
+
+          <div class="roi__grid">
+            <div class="roi__chart">
+              <div class="roi__chart-head">
+                <div>
+                  <span class="mono">Biological vs chronological age</span>
+                  <p class="roi__big"><b data-roi="gap">0.0</b><small>years returned</small></p>
+                </div>
+                <div class="roi__legend mono"><span><i class="lg lg--ink"></i>Calendar</span><span><i class="lg lg--lime"></i>Biological</span></div>
+              </div>
+              <svg class="chart" viewBox="0 0 600 260" preserveAspectRatio="none" aria-label="Biological age falling below calendar age over 12 months">
+                <g class="chart__grid">
+                  <line x1="0" y1="40" x2="600" y2="40" /><line x1="0" y1="110" x2="600" y2="110" /><line x1="0" y1="180" x2="600" y2="180" /><line x1="0" y1="250" x2="600" y2="250" />
+                </g>
+                <path class="chart__cal" d="M0,120 L600,94" />
+                <path class="chart__area" d="" />
+                <path class="chart__bio" d="" />
+                <circle class="chart__dot" r="6" cx="0" cy="120" />
+              </svg>
+              <div class="chart__x mono"><span>Day 1</span><span>M3</span><span>M6</span><span>M9</span><span>M12</span></div>
+            </div>
+
+            <div class="roi__metrics">
+              <div class="metric"><span class="mono">VO₂ max</span><b data-roi="vo2">38.0</b><small>ml/kg/min</small><em data-roi-d="vo2"></em></div>
+              <div class="metric"><span class="mono">Lean mass</span><b data-roi="lean">46.2</b><small>kg</small><em data-roi-d="lean"></em></div>
+              <div class="metric"><span class="mono">Visceral fat</span><b data-roi="visc">11</b><small>level</small><em data-roi-d="visc"></em></div>
+              <div class="metric"><span class="mono">Mobility score</span><b data-roi="mob">62</b><small>/ 100</small><em data-roi-d="mob"></em></div>
+              <div class="metric"><span class="mono">Resting HR</span><b data-roi="rhr">72</b><small>bpm</small><em data-roi-d="rhr"></em></div>
+              <div class="metric"><span class="mono">Sessions logged</span><b data-roi="ses">0</b><small>train · stretch · recover</small><em data-roi-d="ses"></em></div>
+            </div>
+          </div>
+          <p class="roi__note mono">Illustrative member profile for explanation only. Individual results vary and are reviewed with your coach each quarter.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 05 · Method / 90-day loop ─────────── -->
+    <section class="loop" id="method" data-section="05" data-label="Method">
+      <div class="loop__pin">
+        <div class="loop__copy">
+          <p class="label mono"><span>(05)</span> The method</p>
+          <h2>The 90-day<br /><span class="thin">loop.</span></h2>
+          <p>Assess, prescribe, perform, recover, re-measure. Then again — sharper each time. Your plan is never finished, because you aren't.</p>
+        </div>
+        <div class="loop__ring">
+          <svg viewBox="0 0 500 500" aria-hidden="true">
+            <circle class="loop__track" cx="250" cy="250" r="200" />
+            <circle class="loop__prog" cx="250" cy="250" r="200" />
+            <g class="loop__ticks"></g>
+          </svg>
+          <div class="loop__center"><b data-loop-day>0</b><span class="mono">Day</span></div>
+          <div class="loop__node" style="--a:-90deg"><i></i><span><small class="mono">Day 0</small>Assess</span></div>
+          <div class="loop__node" style="--a:-18deg"><i></i><span><small class="mono">Day 1</small>Prescribe</span></div>
+          <div class="loop__node" style="--a:54deg"><i></i><span><small class="mono">Daily</small>Perform</span></div>
+          <div class="loop__node" style="--a:126deg"><i></i><span><small class="mono">Weekly</small>Recover</span></div>
+          <div class="loop__node" style="--a:198deg"><i></i><span><small class="mono">Day 90</small>Re-measure</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 06 · Spaces ─────────── -->
+    <section class="spaces" id="spaces" data-section="06" data-label="Spaces">
+      <div class="spaces__pin">
+        <div class="spaces__stage"></div>
+        <div class="spaces__cap">
+          <p class="label mono"><span>(06)</span> Inside FLEXBOX</p>
+          <p class="spaces__idx mono"><b data-sp-i>01</b> / <span data-sp-n>13</span></p>
+          <h2 data-sp-title>Lobby</h2>
+          <p class="mono" data-sp-tag>Arrival</p>
+        </div>
+        <div class="spaces__strip"></div>
+      </div>
+    </section>
+
+    <!-- ─────────── 07 · Membership ─────────── -->
+    <section class="members" id="membership" data-section="07" data-label="Membership">
+      <div class="wrap">
+        <div class="members__head">
+          <p class="label mono"><span>(07)</span> Membership</p>
+          <h2>Not a membership.<br /><span class="thin">A currency.</span></h2>
+          <p>FLEX credits move freely across training, clinic, stretch and recovery — spend them where your Blueprint says you'll get the greatest return. Every plan begins with your assessment.</p>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <header><span class="mono">01</span><h3>Flex Start</h3></header>
+            <p class="plan__flex"><b>100</b><span>FLEX</span></p>
+            <ul><li>Your Blueprint assessment</li></ul>
+            <footer><p class="plan__price"><small>THB</small>15,000</p><a href="#book" data-scroll class="btn btn--line">Enquire</a></footer>
+          </article>
+          <article class="plan">
+            <header><span class="mono">02</span><h3>Flex Flow</h3></header>
+            <p class="plan__flex"><b>150</b><span>FLEX</span></p>
+            <ul><li>Your Blueprint assessment</li><li>2 group class tickets</li></ul>
+            <footer><p class="plan__price"><small>THB</small>18,000</p><a href="#book" data-scroll class="btn btn--line">Enquire</a></footer>
+          </article>
+          <article class="plan">
+            <header><span class="mono">03</span><h3>Flex Form</h3></header>
+            <p class="plan__flex"><b>280</b><span>FLEX</span></p>
+            <ul><li>Your Blueprint assessment</li><li>5 group class tickets</li><li>1 red light session</li><li>1 oxygen chamber session</li></ul>
+            <footer><p class="plan__price"><small>THB</small>27,000</p><a href="#book" data-scroll class="btn btn--line">Enquire</a></footer>
+          </article>
+          <article class="plan plan--prime">
+            <header><span class="mono">04</span><h3>Flex Prime</h3></header>
+            <p class="plan__flex"><b>500</b><span>FLEX</span></p>
+            <ul><li>Your Blueprint assessment</li><li>Unlimited group classes</li><li>2 red light sessions</li><li>2 oxygen chamber sessions</li><li>THB 2,000 Raydus credit</li></ul>
+            <footer><p class="plan__price"><small>THB</small>49,000</p><a href="#book" data-scroll class="btn btn--lime">Enquire</a></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 08 · Book ─────────── -->
+    <section class="book" id="book" data-section="08" data-label="Begin">
+      <img class="book__bg" src="img/space/p07.jpg" alt="" loading="lazy" />
+      <div class="wrap book__inner">
+        <div class="book__copy">
+          <p class="label mono"><span>(08)</span> Begin</p>
+          <h2>Begin with<br />your <span class="lime">Blueprint.</span></h2>
+          <p>Ninety minutes in our assessment lab. A complete picture of how you move, breathe, build and recover — and a plan written only for you.</p>
+        </div>
+        <form class="book__form" novalidate>
+          <label><span class="mono">Name</span><input name="name" autocomplete="name" required placeholder="Your full name" /></label>
+          <label><span class="mono">Phone or LINE ID</span><input name="contact" required placeholder="08x xxx xxxx" /></label>
+          <label><span class="mono">Primary goal</span>
+            <select name="goal">
+              <option>Live longer, feel younger</option>
+              <option>Build strength</option>
+              <option>Move without pain</option>
+              <option>Recover and sleep better</option>
+              <option>Metabolic health &amp; body composition</option>
+            </select>
+          </label>
+          <button class="btn btn--lime btn--block" type="submit" data-cursor="Send">Request my Blueprint <span aria-hidden="true">→</span></button>
+          <p class="book__ok mono" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__cols">
+        <div><span class="mono">Visit</span><p>Suvarnabhumi, Bangkok</p></div>
+        <div><span class="mono">Disciplines</span><p>Train · Clinic · Stretch · Recover</p></div>
+        <div><span class="mono">Follow</span><p><a href="#" data-cursor="Open">Instagram</a> · <a href="#" data-cursor="Open">LINE</a> · <a href="#" data-cursor="Open">Facebook</a></p></div>
+        <div><span class="mono">Tagline</span><p><span class="lime">Flex</span> your move.</p></div>
+      </div>
+      <div class="foot__logo" data-logo></div>
+      <div class="foot__base mono"><span>© 2026 FLEXBOX · Personalised Longevity Club</span><a href="#top" data-scroll>Back to top ↑</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>
