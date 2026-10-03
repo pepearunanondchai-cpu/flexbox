@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="img/space/p05.jpg" />
-  <script type="module" crossorigin src="/flexbox/assets/index-BesDVerF.js"></script>
-  <link rel="stylesheet" crossorigin href="/flexbox/assets/index-nMsPvMm4.css">
+  <script type="module" crossorigin src="/flexbox/assets/index-BsgyH2e1.js"></script>
+  <link rel="stylesheet" crossorigin href="/flexbox/assets/index-BCJOCjVI.css">
 </head>
 <body class="is-loading">
 
@@ -41,19 +41,32 @@
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
   </header>
   <div class="menu" aria-hidden="true">
-    <a href="#disciplines" data-scroll><small>01</small>Disciplines</a>
-    <a href="#blueprint" data-scroll><small>02</small>Blueprint</a>
-    <a href="#roi" data-scroll><small>03</small>ROI</a>
-    <a href="#method" data-scroll><small>04</small>Method</a>
-    <a href="#spaces" data-scroll><small>05</small>Spaces</a>
-    <a href="#membership" data-scroll><small>06</small>Membership</a>
-    <a href="#book" data-scroll class="menu__cta"><small>→</small>Book your Blueprint</a>
+    <a href="#top" data-scroll data-chapter="00"><small>00</small>Entrance</a>
+    <a href="#manifesto" data-scroll data-chapter="01"><small>01</small>Manifesto</a>
+    <a href="#disciplines" data-scroll data-chapter="02"><small>02</small>Disciplines</a>
+    <a href="#blueprint" data-scroll data-chapter="03"><small>03</small>Blueprint</a>
+    <a href="#roi" data-scroll data-chapter="04"><small>04</small>Return</a>
+    <a href="#method" data-scroll data-chapter="05"><small>05</small>Method</a>
+    <a href="#spaces" data-scroll data-chapter="06"><small>06</small>Spaces</a>
+    <a href="#membership" data-scroll data-chapter="07"><small>07</small>Membership</a>
+    <a href="#book" data-scroll data-chapter="08" class="menu__cta"><small>08</small>Book your Blueprint</a>
   </div>
 
   <!-- Persistent HUD (readingstones-style measurement readouts) -->
   <div class="hud" aria-hidden="true">
     <div class="hud__l"><span data-hud-index>00</span><i></i><span data-hud-label>Entrance</span></div>
     <div class="hud__r"><span>D = </span><b data-hud-depth>00,0</b><span class="hud__bar"><i data-hud-bar></i></span></div>
+  </div>
+
+  <!-- Mobile chapter bar: where you are + what scrolling will do next -->
+  <div class="mbar" role="navigation" aria-label="Page progress">
+    <button class="mbar__where" type="button" aria-label="Open chapter list">
+      <span class="mbar__idx mono"><b data-mbar-idx>00</b>/08</span>
+      <span class="mbar__txt"><b data-mbar-label>Entrance</b><small data-mbar-hint>Scroll to enter</small></span>
+    </button>
+    <span class="mbar__cue" aria-hidden="true" data-mbar-cue><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+    <a href="#book" class="mbar__book" data-scroll data-mbar-book>Book</a>
+    <span class="mbar__prog" aria-hidden="true"><i data-mbar-prog></i></span>
   </div>
 
   <main>
